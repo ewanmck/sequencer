@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="custom-css.css">
     <title>Sequencer</title>
 </head>
 
 <body>
     <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="button is-mediums.js"></script>
-    <section class="hero is-primary">
+    <script src="buttons.js"></script>
+    <script src="pure-knob-master/pureknob.js"></script>
+    <script src="volume.js"></script>
+    <section class="hero is-primary is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">Sequencer</h1>
@@ -26,491 +29,570 @@
         </h2>
     </section>
 
-    <section class ="section" id = "sound library">
-        
+    <section class="section box" id="sound library">
+        <div class="columns">
+            <div class="column group-selection">
+                text
+            </div>
+            <div class="column sound-selection">
+                more text
+            </div>
+            <div class="column track-selection">
+                even more text
+            </div>
+        </div>
     </section>
 
-    <section class="section is-medium">
-        <div class="container" id="body">
+    <section class="section is-medium has-background-grey">
+        <div class="container box" id="body">
+
             <div id="track1">
-                <div class="columns">
-                    <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                <div class="columns is-full">
+                    <div class="column has-background-grey-light">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 1
                         </h3>
                     </div>
-                    <div class="column is-four-fifths">
-
-
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                    <div class="column is-full is-four-fifths has-background-grey-light">
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track2">
-                <div class="columns">
-                    <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                <div class="columns is-5">
+                    <div class="column has-background-grey-lighter">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 2
                         </h3>
                     </div>
-                    <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                    <div class="column is-four-fifths has-background-grey-lighter">
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track3">
-                <div class="columns">
+                <div class="columns has-background-grey-light">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 3
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track4">
-                <div class="columns">
+                <div class="columns has-background-grey-lighter">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 4
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track5">
-                <div class="columns">
+                <div class="columns has-background-grey-light">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 5
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track6">
-                <div class="columns">
+                <div class="columns has-background-grey-lighter">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 6
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track7">
-                <div class="columns">
+                <div class="columns has-background-grey-light">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 7
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="track8">
-                <div class="columns is-centered">
+                <div class="columns is-centered has-background-grey-lighter">
                     <div class="column">
-                        <h3 class="subtitle has-text-primary has-text-centered">
+                        <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 8
                         </h3>
                     </div>
                     <div class="column is-four-fifths">
-                        <a class="button is-medium is-grey ">
-                            1
-                        </a>
-                        <a class="button is-medium is-grey">
-                            2
-                        </a>
-                        <a class="button is-medium is-grey">
-                            3
-                        </a>
-                        <a class="button is-medium is-grey">
-                            4
-                        </a>
-                        <a class="button is-medium is-grey">
-                            5
-                        </a>
-                        <a class="button is-medium is-grey">
-                            6
-                        </a>
-                        <a class="button is-medium is-grey">
-                            7
-                        </a>
-                        <a class="button is-medium is-grey">
-                            8
-                        </a>
-                        <a class="button is-medium is-grey">
-                            9
-                        </a>
-                        <a class="button is-medium is-grey">
-                            10
-                        </a>
-                        <a class="button is-medium is-grey">
-                            11
-                        </a>
-                        <a class="button is-medium is-grey">
-                            12
-                        </a>
-                        <a class="button is-medium is-grey">
-                            13
-                        </a>
-                        <a class="button is-medium is-grey">
-                            14
-                        </a>
-                        <a class="button is-medium is-grey">
-                            15
-                        </a>
-                        <a class="button is-medium is-grey">
-                            16
-                        </a>
+                        <div class="buttons are-large is-inverted is-centered">
+                            <a class="button is-grey ">
+                                1
+                            </a>
+                            <a class="button is-grey">
+                                2
+                            </a>
+                            <a class="button is-grey">
+                                3
+                            </a>
+                            <a class="button is-grey">
+                                4
+                            </a>
+                            <a class="button is-grey">
+                                5
+                            </a>
+                            <a class="button is-grey">
+                                6
+                            </a>
+                            <a class="button is-grey">
+                                7
+                            </a>
+                            <a class="button is-grey">
+                                8
+                            </a>
+                            <a class="button is-grey">
+                                9
+                            </a>
+                            <a class="button is-grey">
+                                10
+                            </a>
+                            <a class="button is-grey">
+                                11
+                            </a>
+                            <a class="button is-grey">
+                                12
+                            </a>
+                            <a class="button is-grey">
+                                13
+                            </a>
+                            <a class="button is-grey">
+                                14
+                            </a>
+                            <a class="button is-grey">
+                                15
+                            </a>
+                            <a class="button is-grey">
+                                16
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </section>
-    <footer class="footer">
 
+    <section class="section has-background-grey-light">
+        <div class="columns">
+            <div class="column" id="vlm1">
+                <div class="slider-wrapper is-centered">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                    
+                </div>
+                
+                
+            </div>
+            <div class="column" id="vlm2">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+            </div>
+            <div class="column" id="vlm3">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+                
+                
+            </div>
+            <div class="column" id="vlm4">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+                
+            </div>
+            <div class="column" id="vlm5">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+            </div>
+            <div class="column" id="vlm6">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+            </div>
+            <div class="column" id="vlm7">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+            </div>
+            <div class="column" id="vlm8">
+                <div class="slider-wrapper">
+                    <input class="slider" type="range" min="-100" max="0" step="1">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        hehe its footer
     </footer>
 
 

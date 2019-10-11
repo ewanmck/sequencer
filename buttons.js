@@ -166,6 +166,7 @@ let tracks = {
 //Toggles the button in css and toggles the value in the set of dictionaries
 const toggleButtons= function(event) {
     let button = $(event.target);
+    console.log(button);
 
     button.toggleClass("is-grey");
     button.toggleClass("is-warning");

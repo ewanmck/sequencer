@@ -1,0 +1,34 @@
+.slider-wrapper{
+    display: inline-block;
+    width: 20px;
+    height: 150px;
+    padding: 0;
+}
+
+.slider-wrapper input {
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    transform-origin: 75px 75px;
+    transform: rotate(-90deg);
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: #d3d3d3;
+    outline: none;
+    border-radius: 10%
+
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 25%;
+    width: 30px;
+    height: 30px;
+    background: hsl(171, 100%, 41%);
+
+}
