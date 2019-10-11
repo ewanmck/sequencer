@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <title>Sequencer</title>
+</head>
+
+<body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="button is-mediums.js"></script>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Sequencer</h1>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="title is-centered">
+            (maybe a track name form or something)
+        </h2>
+    </section>
+
+    <section class ="section" id = "sound library">
+        
+    </section>
+
+    <section class="section is-medium">
+        <div class="container" id="body">
+            <div id="track1">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 1
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+
+
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track2">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 2
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track3">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 3
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track4">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 4
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track5">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 5
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track6">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 6
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track7">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 7
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="track8">
+                <div class="columns is-centered">
+                    <div class="column">
+                        <h3 class="subtitle has-text-primary has-text-centered">
+                            Track 8
+                        </h3>
+                    </div>
+                    <div class="column is-four-fifths">
+                        <a class="button is-medium is-grey ">
+                            1
+                        </a>
+                        <a class="button is-medium is-grey">
+                            2
+                        </a>
+                        <a class="button is-medium is-grey">
+                            3
+                        </a>
+                        <a class="button is-medium is-grey">
+                            4
+                        </a>
+                        <a class="button is-medium is-grey">
+                            5
+                        </a>
+                        <a class="button is-medium is-grey">
+                            6
+                        </a>
+                        <a class="button is-medium is-grey">
+                            7
+                        </a>
+                        <a class="button is-medium is-grey">
+                            8
+                        </a>
+                        <a class="button is-medium is-grey">
+                            9
+                        </a>
+                        <a class="button is-medium is-grey">
+                            10
+                        </a>
+                        <a class="button is-medium is-grey">
+                            11
+                        </a>
+                        <a class="button is-medium is-grey">
+                            12
+                        </a>
+                        <a class="button is-medium is-grey">
+                            13
+                        </a>
+                        <a class="button is-medium is-grey">
+                            14
+                        </a>
+                        <a class="button is-medium is-grey">
+                            15
+                        </a>
+                        <a class="button is-medium is-grey">
+                            16
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer class="footer">
+
+    </footer>
+
+
+</body>
