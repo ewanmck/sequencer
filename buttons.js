@@ -177,7 +177,7 @@ const toggleButtons= function(event) {
 };
 
 function registerButtonHandler() {
-    $(".button").on("click", toggleButtons);
+    $(".sequencer").on("click", toggleButtons);
 }
 
 $(function() {
