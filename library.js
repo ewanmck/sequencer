@@ -5,23 +5,47 @@
     use those values to pull the sound from the folder
 */
 
-let trackSelection = null; 
+
+let currLibraryButton = null;
+let currSoundButton = null;
+let currTrackButton = null;
+let trackSelection = null;
+let soundSelection = null; 
 
 
 const updateLibrary = function(event) {
     let whitespace = $(".sound-selection")
     whitespace.empty();
+    soundSelection = null;
+
     let selection = $(event.target).text();
     let keys = Object.keys(libraryData[selection]);
     for (let i = 0; i < keys.length; i++) {
-        whitespace.append(`<button class="button sound">${keys[i]}</button>`);
+        whitespace.append(`<button class="button is-info sound">${keys[i]}</button>`);
     }
     $(".sound").on("click", updateCurrentSelection);
+
+
+    //change button colors
+    if(currLibraryButton != null){
+        currLibraryButton.css("background-color", "hsl(204, 86%, 53%)");
+    }
+ 
+    currLibraryButton = $(event.target);
+    currLibraryButton.css("background-color", "hsl(190, 86%, 53%)");
 }
 
 const updateCurrentSelection = function(event) {
-    let currentSelection = $(event.target).text();
-    console.log(currentSelection);
+    soundSelection = $(event.target).text();
+    console.log(soundSelection);
+
+    //change button colors
+    if(currSoundButton != null){
+        currSoundButton.css("background-color", "hsl(204, 86%, 53%)");
+    }
+     
+    currSoundButton = $(event.target);
+    currSoundButton.css("background-color", "hsl(190, 86%, 53%)");
 
 
 }
@@ -29,7 +53,27 @@ const updateCurrentSelection = function(event) {
 const updateTrackSelection = function(event) {
     trackSelection = $(event.target).text();
     console.log(trackSelection);
+
+    //change button colors
+    if(currTrackButton != null){
+        currTrackButton.css("background-color", "hsl(204, 86%, 53%)");
+    }
+         
+    currTrackButton = $(event.target);
+    currTrackButton.css("background-color", "hsl(190, 86%, 53%)");
 }
+
+//send sound to track
+$(".submission").on("click", function(){
+    if((trackSelection == null) || (soundSelection == null)){
+        //give the user some info on why submission failed
+        return;
+    }
+    else{
+        let tracks = $("#body").children();
+        $(tracks[trackSelection-1]).children().first().children().last().children().first().text(soundSelection);
+    }
+})
 
 
 function registerLibraryListeners() {

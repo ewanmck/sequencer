@@ -183,3 +183,7 @@ function registerButtonHandler() {
 $(function() {
    registerButtonHandler();
 });
+
+$(document).ready(function(){
+	$('.scroll-pane').jScrollPane();
+});

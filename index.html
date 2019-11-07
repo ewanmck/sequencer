@@ -4,70 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+
+
+
+    <!-- latest jQuery direct from jQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="./node_modules/jscrollpane/script/jquery.jscrollpane.min.js"></script>
+
+    <!-- the mousewheel plugin - optional to provide mousewheel support -->
+    <script type="text/javascript" src="./node_modules/jscrollpane/script/jquery.mousewheel.js"></script>
+
+    <!-- styles needed by jScrollPane -->
+    <link type="text/css" href="./node_modules/jscrollpane/style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
     <link rel="stylesheet" href="custom-css.css">
+
     <title>Sequencer</title>
 </head>
 
 <body>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="buttons.js"></script>
-    <script src="volume.js"></script>
-    <script src="library.js"></script>
-    <section class="hero is-primary is-bold">
+    <section class="hero is-info">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">Sequencer</h1>
-            </div>
+                <h1 class="title is-2">Sequencer - Edit Track</h1>
+            </div2>
 
+        </div>
+    </section>
+
+    <section class="section" id = "titleBox">
+        <span class="title is-1" id = 'sequenceTitle'>
+        </span>
+
+        <input type = 'text' class="title is-1" id = 'seqTitleEdit'>
+        </input>
+
+    </section>
+
+    <section class="section box" id="soundLibrary">
+        <div class="columns">
+            <div class = "column sound-column">
+            <p class = "subtitle is-3 column-header">Choose a Library</p>
+            <div class="group-selection scroll-pane">
+                    <button class = "button is-info library">kick</button>
+                    <button class = "button is-info library">snare</button>
+                    <button class = "button is-info library">hats</button>
+                    <button class = "button is-info library">tom</button>
+                    <button class = "button is-info library">synth</button>
+                    <button class = "button is-info library">sample</button>
+                    <button class = "button is-info library">fx</button>
+            </div>
+            </div>
+            <div class = "column sound-column">
+                <p class = "subtitle is-3 column-header">Choose a Sound</p>
+                <div class="sound-selection  scroll-pane">
+                    No Library Selected
+                </div>
+            </div>
+            <div class = "column sound-column">
+                <p class = "subtitle is-3 column-header">Choose a Track</p>
+                <div class="column track-selection scroll-pane">
+                        <button class = "button is-info track">1</button>
+                        <button class = "button is-info track">2</button>
+                        <button class = "button is-info track">3</button>
+                        <button class = "button is-info track">4</button>
+                        <br>
+                        <button class = "button is-info track">5</button>
+                        <button class = "button is-info track">6</button>
+                        <button class = "button is-info track">7</button>
+                        <button class = "button is-info track">8</button>
+                        <br>
+                        <button class = "button is-info submission">Send to Track!</button>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="title is-centered">
-            (maybe a track name form or something)
-        </h2>
-    </section>
-
-    <section class="section box" id="sound library">
-        <div class="columns">
-            <div class="column group-selection">
-                <div class="buttons">
-                    <button class = "button library">kick</button>
-                    <button class = "button library">snare</button>
-                    <button class = "button library">hats</button>
-                    <button class = "button library">tom</button>
-                    <button class = "button library">synth</button>
-                    <button class = "button library">sample</button>
-                    <button class = "button library">fx</button>
-                </div>
-            </div>
-            <div class="column sound-selection">
-                text to clear
-            </div>
-            <div class="column track-selection">
-                    <button class = "button track">1</button>
-                    <button class = "button track">2</button>
-                    <button class = "button track">3</button>
-                    <button class = "button track">4</button>
-                    <button class = "button track">5</button>
-                    <button class = "button track">6</button>
-                    <button class = "button track">7</button>
-                    <button class = "button track">8</button>
-                    <button class = "button submission">Send!</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="section is-medium has-background-grey">
         <div class="container box" id="body">
-
-            <div id="track1">
-                <div class="columns is-full">
+            <!--
+            <div id="track1" class = "row">
+                <div class="columns">
                     <div class="column has-background-grey-light">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
-                            Track 1
+                            TRACK 1
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-full is-four-fifths has-background-grey-light">
                         <div class="buttons are-large is-inverted is-centered">
@@ -89,7 +115,7 @@
                             <a class="button is-grey sequencer">
                                 6
                             </a>
-                            <a class="button is-grey sequencer">
+                            <a class="button sequencer">
                                 7
                             </a>
                             <a class="button is-grey sequencer">
@@ -123,12 +149,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track2">
-                <div class="columns is-5">
+            <div id="track2" class = "row">
+                <div class="columns ">
                     <div class="column has-background-grey-lighter">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 2
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths has-background-grey-lighter">
                         <div class="buttons are-large is-inverted is-centered">
@@ -155,7 +182,6 @@
                             </a>
                             <a class="button is-grey sequencer">
                                 8
-                            </a>
                             <a class="button is-grey sequencer">
                                 9
                             </a>
@@ -184,12 +210,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track3">
+            <div id="track3" class = "row">
                 <div class="columns has-background-grey-light">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 3
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -245,12 +272,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track4">
+            <div id="track4" class = "row">
                 <div class="columns has-background-grey-lighter">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 4
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -306,12 +334,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track5">
+            <div id="track5" class = "row">
                 <div class="columns has-background-grey-light">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 5
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -367,12 +396,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track6">
+            <div id="track6" class = "row">
                 <div class="columns has-background-grey-lighter">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 6
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -428,12 +458,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track7">
+            <div id="track7" class = "row">
                 <div class="columns has-background-grey-light">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 7
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -489,12 +520,13 @@
                     </div>
                 </div>
             </div>
-            <div id="track8">
+            <div id="track8" class = "row">
                 <div class="columns is-centered has-background-grey-lighter">
                     <div class="column">
                         <h3 class="subtitle has-text-black-bis has-text-centered">
                             Track 8
                         </h3>
+                        <h4 class= "has-text-centered is-italic">None Selected</h4>
                     </div>
                     <div class="column is-four-fifths">
                         <div class="buttons are-large is-inverted is-centered">
@@ -551,7 +583,7 @@
                 </div>
             </div>
         </div>
-
+        -->
     </section>
 
     <section class="section has-background-grey-light">
@@ -611,5 +643,8 @@
         hehe its footer
     </footer>
 
-
+    <script src="buttons.js"></script>
+    <script src="volume.js"></script>
+    <script src="library.js"></script>
+    <script src="editable.js"></script>
 </body>

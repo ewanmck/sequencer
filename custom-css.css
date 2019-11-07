@@ -1,3 +1,4 @@
+
 .slider-wrapper{
     display: inline-block;
     width: 20px;
@@ -31,4 +32,106 @@
     height: 30px;
     background: hsl(171, 100%, 41%);
 
+}
+
+.scroll-pane{
+    height:250px;
+    overflow:auto;
+    padding-left: 100px;
+    padding-bottom: 10px;
+    background-color:white;
+    border-radius:10px;
+}
+
+
+.library, .sound{
+    width:300px;
+    height:100px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    font-size:30px;
+    font-family:'arial medium';
+    display:block;
+    margin-left: 65px;
+}
+
+
+.button-row{
+    display:block;
+    margin-bottom:20px;
+}
+.sequencer{
+    height:60px;
+    width:60px;
+}
+
+/*Title CSS*/
+
+
+#titleBox{
+    width:fit-content;
+    height:fit-content;
+    margin-left: 60px;
+}
+
+
+#sequenceTitle:hover{
+    color: #AAAAAA;
+}
+
+input[type=text]{
+    background:transparent;
+    border:none;
+    border-bottom: 1px solid #AAAAAA;
+    width:fit-content;
+    color:#AAAAAA;
+    display:none;
+}
+input:focus{
+    outline-width:0;
+}
+
+/*Sound Selection CSS*/
+
+.sound-column{
+    text-align:center;
+}
+
+.track-selection{
+    padding-top: 50px;
+}
+
+.track{
+    width:70px;
+    height:70px;
+    margin:10px;
+    color:white;
+    font-size: 30px;
+}
+
+.submission{
+    width:165px;
+    height: 50px;
+    margin-top:10px;
+    font-size: 20px;
+}
+
+#soundLibrary{
+    background-color:hsl(204, 86%, 53%);
+}
+
+.column-header{
+    color:white;
+}
+
+
+/*track list*/
+.sequencer{
+    width:56px;
+    height:56px;
+}
+
+.is-vertical-center{
+    display:flex;
+    align-items;
 }
