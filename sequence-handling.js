@@ -1,4 +1,4 @@
-
+// look at Tone.js for sequence handling
 const context = new AudioContext();
 let samplesArray = [null, null, null, null, null, null, null, null];
 let filepathArray = [null, null, null, null, null, null, null, null];
@@ -18,7 +18,7 @@ async function setupSample(filePath) {
     return sample;
 }
 
-// define function that takes 
+// define function that takes
 const handleSampleSetup = async function (event) {
     if(trackSelection != null && soundSelection != null){
         console.log(currLibraryButton)
@@ -60,11 +60,11 @@ bpmControl.on('input', function() {
     tempo = Number(this.value);
 }, false);
 
-let lookahead = 25.0; 
+let lookahead = 25.0;
 let scheduleAheadTime = 0.1;
 
 let currentNote = 0;
-let nextNoteTime = 0.0; 
+let nextNoteTime = 0.0;
 
 function nextNote() {
     const secondsPerBeat = 120.0 / tempo;
@@ -112,7 +112,7 @@ function scheduleNote(beatNumber, time) {
     if (track8Toggles[beatNumber] == true && bufferArray[7] != null) {
         playSample(context, bufferArray[7]);
     }
-    
+
 }
 
 const scheduler = function() {
