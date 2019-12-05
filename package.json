@@ -1,0 +1,25 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buttons.js",
+  "dependencies": {
+    "bulma": "^0.7.5",
+    "tone": "^13.8.25",
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewanmck/sequencer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ewanmck/sequencer/issues"
+  },
+  "homepage": "https://github.com/ewanmck/sequencer#readme"
+}
