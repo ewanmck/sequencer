@@ -59,8 +59,19 @@ const looper = function () {
     playState = !playState;
 }
 
+function bpmToSeconds(bpm) {
+    return 60/bpm;
+}
+
+const changeBPM = function (event) {
+    let bpmVal = $(".bpm").val();
+    Tone.Transport.bpm.value = bpmVal/2;
+}
+
 
 $(document).ready(function () {
     $(".submission").on("click", handleSampleSetup);
     $(".play").on("click", looper);
+    $(".bpm").on("input", changeBPM);
 });
+
