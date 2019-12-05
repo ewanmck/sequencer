@@ -1,6 +1,8 @@
 
 const context = new AudioContext();
 let samplesArray = [null, null, null, null, null, null, null, null];
+let filepathArray = [null, null, null, null, null, null, null, null];
+let bufferArray = [null, null, null, null, null, null, null, null];
 
 async function getFile(audioContext, filepath) {
     // fetch(filepath) currently tries to pull from a url, might want to just
@@ -19,20 +21,35 @@ async function setupSample(filePath) {
 // define function that takes 
 const handleSampleSetup = async function (event) {
     if(trackSelection != null && soundSelection != null){
-        let filepath = libraryData[currLibraryButton][soundSelection];
+        console.log(currLibraryButton)
+        console.log(soundSelection);
+        let filepath = libraryData[currLibraryButton.text()][soundSelection];
+        filepathArray[trackSelection-1] = filepath;
         setupSample(filepath).then((sample) => {
-            let sampleNode = context.createBufferSource();
-            sampleNode.buffer = sample;
-            sampleNode.connect(context.destination);
-            samplesArray[trackSelection-1] = sampleNode;
+            bufferArray[trackSelection-1] = sample;
+            console.log(sample);
+            // let sampleNode = context.createBufferSource();
+            // sampleNode.buffer = sample;
+            // sampleNode.connect(context.destination);
+            // samplesArray[trackSelection-1] = sampleNode;
         });
     }
 }
 
+async function remakeSample(location) {
+    setupSample(filepathArray[location]).then((sample) => {
+        let sampleNode = context.createBufferSource();
+        sampleNode.buffer = sample;
+        sampleNode.connect(context.destination);
+        samplesArray[trackSelection-1] = sampleNode;
+    });
+}
+
 function playSample(audioContext, audioBuffer) {
-    const sampleSource = audioContext.createBufferSource();
+    console.log("playing");
+    let sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination)
+    sampleSource.connect(audioContext.destination);
     sampleSource.start();
     return sampleSource;
 }
@@ -65,41 +82,43 @@ const padsInQueue = [];
 function scheduleNote(beatNumber, time) {
 
     beatNumber += 1;
+    console.log(beatNumber)
     // push the note on the queue, even if we're not playing.
-    notesInQueue.push({ note: beatNumber, time: time });
+    padsInQueue.push({ note: beatNumber, time: time });
 
     // add functionality that checks if a track is muted to skip over the sample
 
-    if (track1Toggles[beatNumber] == true && samplesArray[0] != null) {
-        samplesArray[0].start();
+    if (track1Toggles[beatNumber] == true && bufferArray[0] != null) {
+        playSample(context, bufferArray[0]);
     }
-    if (track2Toggles[beatNumber] == true && samplesArray[1] != null) {
-        samplesArray[1].start();
+    if (track2Toggles[beatNumber] == true && bufferArray[1] != null) {
+        playSample(context, bufferArray[1]);
     }
-    if (track3Toggles[beatNumber] == true && samplesArray[2] != null) {
-        samplesArray[2].start();
+    if (track3Toggles[beatNumber] == true && bufferArray[2] != null) {
+        playSample(context, bufferArray[2]);
     }
-    if (track4Toggles[beatNumber] == true && samplesArray[3] != null) {
-        samplesArray[3].start();
+    if (track4Toggles[beatNumber] == true && bufferArray[3] != null) {
+        playSample(context, bufferArray[3]);
     }
-    if (track5Toggles[beatNumber] == true && samplesArray[4] != null) {
-        samplesArray[4].start();
+    if (track5Toggles[beatNumber] == true && bufferArray[4] != null) {
+        playSample(context, bufferArray[4]);
     }
-    if (track6Toggles[beatNumber] == true && samplesArray[5] != null) {
-        samplesArray[5].start();
+    if (track6Toggles[beatNumber] == true && bufferArray[5] != null) {
+        playSample(context, bufferArray[5]);
     }
-    if (track7Toggles[beatNumber] == true && samplesArray[6] != null) {
-        samplesArray[6].start();
+    if (track7Toggles[beatNumber] == true && bufferArray[6] != null) {
+        playSample(context, bufferArray[6]);
     }
-    if (track8Toggles[beatNumber] == true && samplesArray[7] != null) {
-        samplesArray[7].start();
+    if (track8Toggles[beatNumber] == true && bufferArray[7] != null) {
+        playSample(context, bufferArray[7]);
     }
     
 }
 
-function scheduler() {
+const scheduler = function() {
     // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
-    while (nextNoteTime < audioCtx.currentTime + scheduleAheadTime ) {
+    console.log("started");
+    while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
         scheduleNote(currentNote, nextNoteTime);
         nextNote();
     }
@@ -108,4 +127,5 @@ function scheduler() {
 
 $(document).ready(function () {
     $(".submission").on("click", handleSampleSetup);
+    $(".play").on("click", scheduler);
 })

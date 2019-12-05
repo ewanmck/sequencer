@@ -89,22 +89,22 @@ $(function() {
 
 let libraryData = {
     "kick": {
-        "SPV3_KICK2" : "final-project/samples/SPV3_KICK2 fav.wav"
+        "SPV3_KICK2" : "samples/SPV3_KICK2 fav.wav"
     },
     "snare": {
-        "Jack Ü" : "final-project/samples/Jack Ü - Take Ü There Snare.wav"
+        "Jack Ü" : "samples/Jack Ü - Take Ü There Snare.wav"
     },
     "hats": {
-        "hy_hat" : "/Users/ewan/comp426-cli/final-project/samples/hy_hat.wav"
+        "hy_hat" : "samples/hy_hat.wav"
     },
     "tom": {
-        "SPV3_TOM2" : "final-project/samples/SPV3_TOM2.wav"
+        "SPV3_TOM2" : "samples/SPV3_TOM2.wav"
     },
     "synth": {
-        "synth 3" : "final-project/samples/synth 3.wav"
+        "synth 3" : "samples/synth 3.wav"
     },
     "sample": {
-        "AiryFlute_01_SP" : "final-project/samples/AiryFlute_01_SP.wav"
+        "AiryFlute_01_SP" : "samples/AiryFlute_01_SP.wav"
     },
     "fx": {},
 };
