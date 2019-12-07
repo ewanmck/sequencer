@@ -15,14 +15,15 @@ let soundSelection = null;
 
 const updateLibrary = function(event) {
     let whitespace = $(".sound-selection")
+    
     whitespace.empty();
     soundSelection = null;
-
     let selection = $(event.target).text();
     let keys = Object.keys(libraryData[selection]);
     for (let i = 0; i < keys.length; i++) {
-        whitespace.append(`<button class="button is-info sound">${keys[i]}</button>`);
+        whitespace.append($("<button></button>").text(keys[i]).addClass("button is-info sound"));
     }
+    //api.reinitialise();
     $(".sound").on("click", updateCurrentSelection);
 
 
