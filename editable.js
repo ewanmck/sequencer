@@ -54,7 +54,7 @@ let loadFunc = function(){
     //load the tracks
     let body = $("#body")
     for(let i = 1; i<=8; i++){
-        console.log("sup");
+        //console.log("sup");
         let newTrack = trackGenerator(i);
         if(i%2 == 0){
             newTrack.addClass("has-background-grey-lighter");

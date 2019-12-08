@@ -5,8 +5,9 @@
   "main": "buttons.js",
   "dependencies": {
     "bulma": "^0.7.5",
+    "jquery": "^3.4.1",
     "tone": "^13.8.25",
-    "jquery": "^3.4.1"
+    "webmidi": "^2.5.1"
   },
   "devDependencies": {},
   "scripts": {
