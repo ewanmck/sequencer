@@ -19,6 +19,8 @@ const updateLibrary = function(event) {
     whitespace.empty();
     soundSelection = null;
     let selection = $(event.target).text();
+    whitespace.addClass("jspScrollable");
+
     let keys = Object.keys(libraryData[selection]);
     for (let i = 0; i < keys.length; i++) {
         whitespace.append($("<button></button>").text(keys[i]).addClass("button is-info sound"));
@@ -26,7 +28,7 @@ const updateLibrary = function(event) {
     //api.reinitialise();
     $(".sound").on("click", updateCurrentSelection);
 
-
+    whitespace.attr('style', "");
     //change button colors
     if(currLibraryButton != null){
         currLibraryButton.css("background-color", "hsl(204, 86%, 53%)");
