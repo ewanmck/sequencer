@@ -33,32 +33,36 @@
     <div class="hero-body">
             <div class="container">
                 <div class="columns is-centered">
-                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-                    <p class="title">Login</p> 
+                <div class="column is-4">
+                    <p class="title bd-notification">Login or Create Account</p> 
                     <div class="box">
                     <div class="field">
                         <label for="" class="label">Username</label>
                         <div class="control has-icons-left">
-                        <input placeholder="Enter Username" class="input" required>
+                        <input id = "userInput" placeholder="Enter Username" class="input" required>
 
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Password</label>
                         <div class="control has-icons-left">
-                        <input type="password" placeholder="Enter Password" class="input" required>
+                        <input id = "passInput" type="password" placeholder="Enter Password" class="input" required>
                         </div>
                     </div>
                     <div class="field">
-                        <button class="login">
+                        <button id="login">
                             Login
                         </button>
-                        <button class="createbutton">
+                        <button id="create">
                             Create Account
                         </button>
                     </div>
                 </div>
                 </div>
+
+                </div>
+                <div class = "has-text-centered">
+                    <a href = "http://localhost:3001">Or continue without logging in</a>
                 </div>
             </div>
             </div>

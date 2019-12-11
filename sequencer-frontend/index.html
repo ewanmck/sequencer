@@ -33,9 +33,15 @@
 <body>
     <section class="hero is-info">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title is-2">Sequencer - Edit Track</h1>
-                <a href="/login.html">Login</a>
+            <div class="container has-text-centered columns">
+                <div class = "column">
+                    <h1 class="title is-2">Sequencer - Edit Track</h1>
+                </div>
+                <div class = "column has-text-right">
+                    <div class = "button"><a href= "http://localhost:3001/dashboard.html">My Dashboard</a></div>
+                    <div id = "logoutButton" class = "button">Logout</div>
+                </div>
+
                 
             </div>
     </section>
@@ -92,6 +98,7 @@
     <section class="section">
         <div class="container">
             <button class="button play">Play!</button>
+            <button class="button save">Save</button>
             <input class="slider bpm" type="range" min="60" max="180">
         </div>
         <div class="container box" id="body">
@@ -653,10 +660,12 @@
         hehe its footer
     </footer>
 
+    <script src="node_modules/axios/dist/axios.js"></script>
     <script src="buttons.js"></script>
     <script src="volume.js"></script>
     <script src="library.js"></script>
-    <script src="editable.js"></script>
+    <script src="editable.js" type = "module"></script>
     <script src="tone-sequence.js"></script>
     <script src="midi-handle.js"></script>
+
 </body>

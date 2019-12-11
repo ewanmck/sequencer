@@ -1,6 +1,8 @@
 //Functionality of objects in the sequencer that can be edited by the user
 
 
+
+
 let trackGenerator = function(trackNum){
     let row = $("<div id='track" + trackNum + "' class = 'row columns'></div>");
     let column1 = $("<div class='column'></div");
@@ -35,7 +37,6 @@ let loadFunc = function(){
     if(/*there's no track name saved*/true){
         title.innerHTML = "Track Name Here";
         titleEdit.value = "Track Name Here";
-
     }else{
         //load from database
     }
@@ -69,3 +70,57 @@ let loadFunc = function(){
 }
 
 loadFunc();
+
+const pubRoot = new axios.create({
+    baseURL: "http://localhost:3000/public"
+});
+  
+  async function saveTrack() {
+    
+    let trackName = $("#sequenceTitle").html();
+
+    let author = localStorage.getItem("currUser");
+    console.log(author);
+
+    return await pubRoot.post(`/tracks/` + trackName + "/", { 
+        data: {author, trackName}
+    })
+  }
+
+
+
+
+//save the track to /public/ and save name to /user/currUser for reference
+// const saveTrack = async function() {
+//     let trackName = $("#sequenceTitle");
+//     let currUser = localStorage.getItem("currUser");
+//     try{
+//         const response = await axios({
+//             method: 'post',
+//             url: 'http://localhost:3000/public/tracks/',
+//             data: {
+//                 "name": trackName,
+//                 "author": currUser,
+//             }
+//         })
+
+//     } catch (error) {
+//         console.log(error);
+//         alert("Save failed");
+//     }
+    
+// }
+
+function logoutHandler(){
+    //log out
+    localStorage.setItem("jwtToken", null)
+    localStorage.setItem("currUser", null)
+    location.replace("http://localhost:3001/login.html")
+}
+
+$("#logoutButton").on("click", logoutHandler);
+
+
+$(document).ready(function () {
+    $(".save").on("click", saveTrack);
+});

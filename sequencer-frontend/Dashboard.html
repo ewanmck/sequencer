@@ -2,8 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-            <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-            <link rel="stylesheet" href="dashboard.css">
+      <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+      <link rel="stylesheet" href="dashboard.css">
+
+      <!-- latest jQuery direct from jQuery CDN -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     </head>
     <body>
       <header class="hero is-light">
@@ -54,13 +58,16 @@
             <div class="level">
               <div class="level-left">
                 <div class="level-item">
-                  <div class="title">*Username*'s Dashboard</div>
+                  <div class="title is-2" id = "dashTitle">*Username*'s Dashboard</div>
                 </div>
               </div>
               <div class="level-right">
                 <div class="level-item">
-                  <button type="button" class="button is-small">
-                    March 8, 2017 - April 6, 2017
+                  <button type="button" class="button is-medium" id = "seqButton">
+                      Sequencer
+                  </button>
+                  <button type="button" class="button is-medium" id = "logoutButton">
+                      Logout
                   </button>
                 </div>
               </div>
@@ -69,45 +76,65 @@
             <div class = "columns">
                 <div class = "column has-text-centered">
                     <div class = "box">
-                        <p>You've made:</p>
-                        <p>x tracks</p>
+                        <p class = "title is-4">You've made:</p>
+                        <p id = "yourTotalTracks" class = "is-size-5">x tracks</p>
                     </div>    
                 </div>
                 <div class = "column has-text-centered">
                     <div class = "box">
-                        <p>Your most popular track:</p>
-                        <p>trackname</p>
+                        <p class = "title is-4">Your most popular track:</p>
+                        <p class = "is-size-5">trackname</p>
                     </div> 
                 </div>
                 <div class = "column has-text-centered">
                     <div class = "box">
-                        <p>Total tracks made:</p>
-                        <p>x tracks</p>
+                        <p class = "title is-4">Total tracks made:</p>
+                        <p id="totalTracks" class = "is-size-5">x tracks</p>
                     </div>    
                 </div>
                 <div class = "column has-text-centered">
                     <div class = "box">
-                        <p>Overall most popular track:</p>
-                        <p>trackname</p>
+                        <p class = "title is-4">Most popular track:</p>
+                        <p class = "is-size-5">trackname</p>
                     </div> 
                 </div>
             </div>
             
             <div class="columns is-multiline">
                 <div class="column">
-                    <div class="box scrollable">
-                        <p>Your Tracks</p>
-                        <ul>
-                            <li>List of clickable tracks</li>
-                        </ul>
+                    <div class="box">
+                        <div class = "columns">
+                            <div class = "column">
+                                <p class = "subtitle is-size-4">Your Tracks</p>
+                            </div>
+                            <div class = "column has-text-right">
+                                <input id = userSearch>
+                                <button id = "userSearchButton">Search</button>
+                            </div>
+                        </div>
+                        <div class = "scrollable">
+                            <ul id = "yourTracks">
+                              </ul>
+                        </div>
+
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box scrollable">
-                        <p>Popular tracks</p>
-                        <ul>
-                            <li>List of clickable tracks</li>
+                    <div class="box">
+                        <div class = "columns">
+                            <div class = "column">
+                                <p class = "subtitle is-size-4">Popular tracks</p>
+                            </div>
+                            <div class = "column has-text-right">
+                                <input id ="allSearch">
+                                <button id = "allSearchButton">Search</button>
+                            </div>
+                        </div>
+                        <div class = "scrollable">
+                        <ul id = "popTracks">
+
                         </ul>
+                        </div>
                     </div>
               </div>
             </div>
@@ -116,4 +143,6 @@
         </div>
       </div>
     </body>
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script src="dashboard.js"></script>
 </html>
