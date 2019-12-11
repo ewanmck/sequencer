@@ -58,7 +58,7 @@ const looper = function () {
     console.log("looper called");
     if (playState) {
         console.log("stop");
-        loop.stop();
+        Tone.Transport.stop();
     } else {
         console.log("start");
         Tone.Transport.bpm.value = 120;

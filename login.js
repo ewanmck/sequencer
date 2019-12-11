@@ -1,26 +1,24 @@
 
-const acctRoot =  new axios.create({baseURL: "localhost:3001/account"})
-
-
-
-async function createAcct(usr, pwd) {
-    return await acctRoot.post("/create/", {"name":usr, "pass":pwd})
+const handleLogin = async function() {
+    let user = $("#userInput").val();
+    let word = $("#passInput").val();
+    try{
+        const response = await axios({
+            method: 'post',
+            url: 'http://localhost:3000/account/create',
+            data: {
+                name: user,
+                pass: word,
+            }
+        })
+    } catch (error) {
+        alert("Account already exists");
+    }
+    
 }
 
-async function login(usr, pwd) {
-    return await acctRoot.post("/login/", {"name":usr, "pass":pwd})
-        .then( function(response){
-            console.log(response);
-        }
-    );
-}
-
-
-
-//Register buttons
-$("#login").on("click", login($("#userInput").val(), $("#passInput").val()))
-$("#create").on("click", createAcct($("#userInput").val(), $("#passInput").val()))
-
-
+$(document).ready(function () {
+    $("#login").on("click", handleLogin);
+});
 
 
