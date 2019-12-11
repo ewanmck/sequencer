@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+
+
+
+    <!-- latest jQuery direct from jQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="./node_modules/jscrollpane/script/jquery.jscrollpane.min.js"></script>
+
+    <!-- the mousewheel plugin - optional to provide mousewheel support -->
+    <script type="text/javascript" src="./node_modules/jscrollpane/script/jquery.mousewheel.js"></script>
+
+    <script src="node_modules/webmidi/webmidi.min.js"></script>
+
+    <!-- styles needed by jScrollPane -->
+    <link type="text/css" href="./node_modules/jscrollpane/style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+    <!--<link rel="stylesheet" href="?.css">-->
+
+    <title>Sequencer</title>
+</head>
+
+<body>
+    <section class = "hero has-background-primary is-fullheight">
+    <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <p class="title">Login</p> 
+                    <div class="box">
+                    <div class="field">
+                        <label for="" class="label">Username</label>
+                        <div class="control has-icons-left">
+                        <input placeholder="Enter Username" class="input" required>
+
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Password</label>
+                        <div class="control has-icons-left">
+                        <input type="password" placeholder="Enter Password" class="input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <button class="login">
+                            Login
+                        </button>
+                        <button class="createbutton">
+                            Create Account
+                        </button>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+
+    <script src="login.js" type = "module"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+</body>
+
+
+</body>
+</html>

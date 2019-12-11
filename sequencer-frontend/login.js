@@ -1,4 +1,3 @@
-
 const handleLogin = async function() {
     let user = $("#userInput").val();
     let word = $("#passInput").val();
@@ -20,5 +19,3 @@ const handleLogin = async function() {
 $(document).ready(function () {
     $("#login").on("click", handleLogin);
 });
-
-
