@@ -59,9 +59,10 @@ const looper = function () {
     if (playState) {
         console.log("stop");
         Tone.Transport.stop();
+        
     } else {
         console.log("start");
-        Tone.Transport.bpm.value = 120;
+        Tone.Transport.bpm.value = $(".bpm").val();
         Tone.Transport.start();
     }
     playState = !playState;
@@ -73,7 +74,7 @@ function bpmToSeconds(bpm) {
 
 const changeBPM = function (event) {
     let bpmVal = $(".bpm").val();
-    Tone.Transport.bpm.value = bpmVal / 2;
+    Tone.Transport.bpm.value = bpmVal;
 }
 
 
