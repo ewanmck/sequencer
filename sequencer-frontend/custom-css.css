@@ -45,7 +45,7 @@
 
 
 .library, .sound{
-    width:300px;
+    width:200px;
     height:50px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -91,6 +91,7 @@ input:focus{
 
 .sound-column{
     text-align:center;
+    width:100px;
 }
 
 .track-selection{
@@ -130,4 +131,8 @@ input:focus{
 .is-vertical-center{
     display:flex;
     align-items: center;
+}
+
+.tracklist{
+    width:1000px;
 }

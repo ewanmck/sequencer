@@ -31,7 +31,9 @@ async function loadTrackList(filteredList = null, whichList = null){
     let popularTracks = $("#popTracks");
     let yourTracks = $("#yourTracks");
 
-    if (localStorage.getItem(currUser) == null) {
+    console.log(localStorage.getItem("currUser"))
+
+    if (localStorage.getItem("currUser") == "null") {
         yourTracks.append($('<p class="has-text-centered">Log in to view your tracks!</p>'))
     }
 

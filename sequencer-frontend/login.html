@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="login.css">
 
 
 
@@ -33,8 +34,17 @@
     <div class="hero-body">
             <div class="container">
                 <div class="columns is-centered">
-                <div class="column is-4">
-                    <p class="title bd-notification has-text-centered">Login or Create Account</p> 
+                <div class="column is-4 has-text-centered">
+                    <div>
+                        <div class = "button is-medium" id = "toggleLogin">
+                            Login
+                        </div>
+                        or
+                        <div class = "button is-primary is-medium" id = "toggleCreate">
+                        Create account 
+                        </div>
+                    </div>
+                    <!-- <p class="title bd-notification has-text-centered">Login or Create Account</p>  -->
                     <div class="box">
                     <div class="field">
                         <label for="" class="label">Username</label>
@@ -43,6 +53,18 @@
 
                         </div>
                     </div>
+                    <div class="field" id = "skillLevel">
+                        <label for = "" class = "label" > Skill Level</label>
+                        <div class="select" >
+                            <select id = "skillSelect">
+                                <option>1 - What's a Sequencer?</option>
+                                 <option>2 - Heard of it</option>
+                                 <option>3 - Some experience</option>
+                                 <option>2 - Very experienced</option>
+                                 <option>5 - Producer</option>
+                             </select>
+                         </div>
+                     </div>
                     <div class="field">
                         <label for="" class="label">Password</label>
                         <div class="control has-icons-left">

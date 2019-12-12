@@ -9,6 +9,7 @@ export default function(){
 const handleCreate = async function() {
     let user = $("#userInput").val();
     let word = $("#passInput").val();
+    let skill = $("#skillSelect").children("option:selected").val();
     try{
         const response = await axios({
             method: 'post',
@@ -16,6 +17,9 @@ const handleCreate = async function() {
             data: {
                 name: user,
                 pass: word,
+                data :{
+                    "skill": skill
+                }
             }
         })
 
@@ -28,6 +32,7 @@ const handleCreate = async function() {
 const handleLogin = async function() {
     let user = $("#userInput").val();
     let word = $("#passInput").val();
+
     try{
         const response = await axios({
             method: 'post',
@@ -49,6 +54,26 @@ const handleLogin = async function() {
         alert("Invalid Credentials");
     }
 }
+
+function toggle(event){
+    if($(this).attr("id") == "toggleLogin"){
+        $("#toggleLogin").removeClass("is-primary");
+        $("#toggleCreate").addClass("is-primary");
+        $("#skillLevel").css("display", "none")
+        $("#create").css("display", "none");
+        $("#login").css("display", "block");
+    }else{
+        $("#toggleCreate").removeClass("is-primary");
+        $("#toggleLogin").addClass("is-primary");
+        $("#skillLevel").css("display", "block");
+        $("#login").css("display", "none");
+        $("#create").css("display", "block");
+    }
+}
+
+$("#toggleCreate").on("click", toggle);
+$("#toggleLogin").on("click", toggle)
+
 
 $(document).ready(function () {
     $("#create").on("click", handleCreate);
