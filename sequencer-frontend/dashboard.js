@@ -8,6 +8,10 @@ let tracks = null;
 const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
 });
+
+const accRoot = new axios.create({
+    baseURL: "http://localhost:3000/account"
+});
   
 console.log(currUser);
 
@@ -125,9 +129,43 @@ $("#seqButton").on("click", function() {
     location.replace("http://localHost:3001")
 })
 
+let userData;
+let skillLevel;
+
+const loadUserData = async function () {
+    try{
+        userData = await accRoot.get('/status', {
+            headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+        }).then(function (response) {
+            console.log(response);
+            skillLevel = response.data.user.data.skill;
+            console.log(skillLevel);
+            $("#skill").html("Skill Level : " + skillLevel);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+    
+}
+
+let skillUpdateStatus = false;
+
+const handleSkillUpdate = function() {
+    if (!skillUpdateStatus) {
+        console.log("skill");
+        let skillBox = $("#skill");
+        let selection = $("<div class='select'><select id = 'skillSelect'><option>1 - What's a Sequencer?</option><option>2 - Heard of it</option><option>3 - Some experience</option><option>2 - Very experienced</option><option>5 - Producer</option></select></div>");
+        skillBox.replaceWith(selection);
+    } else {
+
+    }
+    
+}
+
 $(document).ready(function() {
-    console.log(currUser);
+    //console.log(currUser);
     console.log(currUser !== "null");
+    //$("#skillChange").on("click", handleSkillUpdate);
     if (currUser !== "null") {
         $("#logButton").html("Logout");
     } else {
@@ -139,6 +177,8 @@ $(document).ready(function() {
     } else {
         $("#dashTitle").html("Dashboard");
     }
+    loadUserData();
+    
 })
 
 //async function deleteSong(trackName){
