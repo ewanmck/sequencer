@@ -46,12 +46,31 @@
     </div>
 
 
-    <section class ="section"id="titleBox">
-
-        <span class="title is-3" id='sequenceTitle'>
-        </span>
-        <input type='text' class="title is-3" id='seqTitleEdit'></input>
-
+    <section class="section" id="titleBox">
+        <div class="columns is-centered">
+            <div class="column is-centered">
+                <span class="title is-3" id='sequenceTitle'>
+                </span>
+                <input type='text' class="title is-3" id='seqTitleEdit'></input>
+            </div>
+            <div class="column is-centered">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" id="unlisted" name="route" checked>
+                        Unlisted
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="private" name="route">
+                        Private
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="public" name="route">
+                        Public
+                    </label>
+                </div>
+                <button class="button save">Save</button>
+            </div>
+        </div>
     </section>
 
     <section class="section box" id="soundLibrary">
@@ -97,7 +116,7 @@
     <section class="section">
         <div class="container">
             <button class="button play">Play!</button>
-            <button class="button save">Save</button>
+
             <input class="slider bpm" type="range" min="60" max="180">
         </div>
         <div class="container box" id="body">

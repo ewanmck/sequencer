@@ -94,7 +94,7 @@ let loadFunc = function () {
             newTrack = trackGenerator(i, currTrackInfo);
         }
 
-        
+
 
         if (i % 2 == 0) {
             newTrack.addClass("has-background-grey-lighter");
@@ -108,7 +108,7 @@ let loadFunc = function () {
         for (let j = 0; j < 16; j++) {
             if (currentTrackToggles[j]) {
                 let track = '#track' + i;
-                toggleButtonState($(track).find(".buttons").children()[j-1]);
+                toggleButtonState($(track).find(".buttons").children()[j - 1]);
             }
         }
     }
@@ -121,6 +121,14 @@ loadFunc();
 
 const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
+});
+
+const privRoot = new axios.create({
+    baseURL: "http://localhost:3000/private"
+});
+
+const userRoot = new axios.create({
+    baseURL: "http://localhost:3000/user"
 });
 
 async function saveTrack() {
@@ -143,9 +151,44 @@ async function saveTrack() {
 
     console.log(trackNames);
 
-    return await pubRoot.post(`/tracks/` + sequenceName + "/", {
-        data: { sequenceName, author, trackNames, trackToggles, bpm }
-    })
+    //console.log($('input[name=route]:checked').parent().text());
+
+    switch ($('input[name=route]:checked').attr("id")) {
+        case "unlisted":
+            return await userRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm },
+            },
+                {
+                    headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+                });
+        case "private":
+            await userRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm },
+            },
+                {
+                    headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+                });
+            return await privRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm }
+            }, { headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") } });
+
+        case "public":
+            await userRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm },
+            },
+                {
+                    headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+                });
+            await privRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm }
+            }, { headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") } });
+            return await pubRoot.post(`/tracks/` + sequenceName + "/", {
+                data: { sequenceName, author, trackNames, trackToggles, bpm }
+            });
+    }
+    //     return await pubRoot.post(`/tracks/` + sequenceName + "/", {
+    //         data: { sequenceName, author, trackNames, trackToggles, bpm }
+    //     })
 }
 
 

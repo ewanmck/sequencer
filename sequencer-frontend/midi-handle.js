@@ -1,4 +1,5 @@
 let launchpad;
+let launchpadLights;
 
 WebMidi.enable(function (err) {
 
