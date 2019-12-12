@@ -52,7 +52,7 @@ let loadFunc = function () {
     console.log("hello")
     let title = document.getElementById('sequenceTitle');
     let titleEdit = document.getElementById('seqTitleEdit');
-    if (localStorage.getItem("currentTrack") == null) {
+    if (localStorage.getItem("currentTrack") == null || localStorage.getItem("currentTrack") == "null" ) {
         title.innerHTML = "Track Name Here";
         titleEdit.value = "Track Name Here";
     } else {
@@ -87,7 +87,7 @@ let loadFunc = function () {
     let body = $("#body")
     for (let i = 1; i <= 8; i++) {
         let newTrack;
-        if (localStorage.getItem("currentTrack") == null) {
+        if (localStorage.getItem("currentTrack") == "null" || localStorage.getItem("currentTrack") == null  ) {
             newTrack = trackGenerator(i, null);
         }
         else {
@@ -105,7 +105,8 @@ let loadFunc = function () {
 
         body.append(newTrack);
 
-        if(localStorage.getItem("currentTrack") != null){
+        console.log(localStorage.getItem("currentTrack"))
+        if(localStorage.getItem("currentTrack") != null && localStorage.getItem("currentTrack") != "null"){
             let currentTrackToggles = currTrackInfo.trackToggles["track" + (i)];
             for (let j = 0; j < 16; j++) {
                 if (currentTrackToggles[j]) {
@@ -229,6 +230,7 @@ $("#logButton").on("click", logoutHandler);
 
 
 $(document).ready(function () {
+
     $(".save").on("click", saveTrack);
 
     console.log("set save handler!");
