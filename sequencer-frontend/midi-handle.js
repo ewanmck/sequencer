@@ -265,7 +265,9 @@ function toggleLights() {
     
 }
 
-
+$(document).ready(function(){
+    toggleLights();
+})
 
 // input.addListener('noteon', "all", function(e) {
 //     console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");

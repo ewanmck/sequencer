@@ -2,7 +2,7 @@
 
 let currUser = localStorage.getItem("currUser");
 
-let trackGenerator = function(trackNum){
+let trackGenerator = function(trackNum, trackInfo){
     let row = $("<div id='track" + trackNum + "' class = 'row columns'></div>");
     let column1 = $("<div class='column'></div");
     let column2 = $("<div class='column is-four-fifths'></div>");
@@ -16,7 +16,20 @@ let trackGenerator = function(trackNum){
     }
 
     trackNumText.html("TRACK " + trackNum);
-    trackNameText.html("No Track Selected");
+    
+    console.log(trackInfo)
+
+    console.log(trackInfo.trackNames[trackNum-1])
+
+    if(trackInfo != null){
+        trackNameText.html(trackInfo.trackNames[trackNum-1])
+        if(trackInfo.trackNames[trackNum-1]== null){
+            trackNameText.html("No Track Selected");
+        }
+    }else{
+        trackNameText.html("No Track Selected");
+    }
+
 
     trackNumText.append(trackNameText);
     column1.append(trackNumText);
@@ -30,16 +43,28 @@ let trackGenerator = function(trackNum){
 
 //load saved data (change to load from database eventually)
 let loadFunc = function(){
-    
+    let currTrackInfo = null;
+    console.log("hello")
     let title = document.getElementById('sequenceTitle');
     let titleEdit = document.getElementById('seqTitleEdit');
     if(localStorage.getItem("currentTrack") == null){
         title.innerHTML = "Track Name Here";
         titleEdit.value = "Track Name Here";
     }else{
-        console.log(JSON.parse(currentTrackObject.sequenceName))
-        title.innerHTML = currentTrackObject.sequenceName//localStorage.getItem("currentTrack").sequenceName;
-        titleEdit.value = currentTrackObject.sequenceName//localStorage.getItem("currentTrack").sequenceName;
+        currTrackInfo = JSON.parse(localStorage.getItem("currentTrack"))
+        //set name from current
+        title.innerHTML = currTrackInfo.sequenceName;
+        titleEdit.value = currTrackInfo.sequenceName;
+        //set bpm from current
+        $(".bpm").val(currTrackInfo.bpm);
+        Tone.Transport.bpm.value = currTrackInfo.bpm;
+        //TODO: set toggles from current
+
+        //set sounds from current
+        tonesArray = currTrackInfo.trackNames;
+
+
+
     }
     title.addEventListener('click', function(){
         title.style.display = "none";
@@ -56,13 +81,21 @@ let loadFunc = function(){
     //load the tracks
     let body = $("#body")
     for(let i = 1; i<=8; i++){
-        //console.log("sup");
-        let newTrack = trackGenerator(i);
+        let newTrack;
+        if(localStorage.getItem("currentTrack") == null){
+            newTrack = trackGenerator(i, null);
+        }
+        else{
+            newTrack = trackGenerator(i, currTrackInfo);
+        }
+
         if(i%2 == 0){
             newTrack.addClass("has-background-grey-lighter");
         }else{
-        newTrack.addClass("has-background-grey-light");
+            newTrack.addClass("has-background-grey-light");
         }
+
+
         body.append(newTrack);
     }
     
@@ -81,12 +114,20 @@ const pubRoot = new axios.create({
     let sequenceName = $("#sequenceTitle").html();
     let bpm = $(".bpm").val();
     console.log("BPM:" + bpm)
-    let trackNames = tonesArray;
-    console.log(trackNames)
+    let trackNames=[null,null,null,null,null,null,null,null];
+    for(let i=0; i<8;i++){
+        if($("#track" + (i+1)).find(".is-italic").html() == "No Track Selected"){
+            trackNames[i] == null;
+        }else{
+            trackNames[i] = $("#track" + (i+1)).find(".is-italic").html();
+        }
+    }
     let trackToggles = tracks;
     console.log(trackToggles)
 
     let author = localStorage.getItem("currUser");
+
+    console.log(trackNames);
 
     return await pubRoot.post(`/tracks/` + sequenceName + "/", { 
         data: {sequenceName, author, trackNames, trackToggles, bpm}

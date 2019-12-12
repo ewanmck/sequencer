@@ -51,10 +51,8 @@ async function loadTrackList(filteredList = null, whichList = null){
         newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["likes"]+"</div>"))
         
         newRecord.on("click", function(event){
-            console.log($(this).data("trackInfo").sequenceName)
-            currentTrackObject =$(this).data("trackInfo")
+            console.log($(this).data("trackInfo"))
             localStorage.setItem("currentTrack", JSON.stringify($(this).data("trackInfo")))
-
             location.replace("http://localhost:3001");
         })
 
