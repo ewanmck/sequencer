@@ -94,7 +94,7 @@ async function loadAllList(permissions){
 
 
 async function reloadAllList(){
-    $("#yourtracks").empty();
+    $("#yourTracks").empty();
     $("#allTracks").empty();
     loadAllList("private");
 }
