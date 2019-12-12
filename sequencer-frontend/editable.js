@@ -104,11 +104,14 @@ let loadFunc = function () {
 
 
         body.append(newTrack);
-        let currentTrackToggles = currTrackInfo.trackToggles["track" + (i)];
-        for (let j = 0; j < 16; j++) {
-            if (currentTrackToggles[j]) {
-                let track = '#track' + i;
-                toggleButtonState($(track).find(".buttons").children()[j - 1]);
+
+        if(localStorage.getItem("currentTrack") != null){
+            let currentTrackToggles = currTrackInfo.trackToggles["track" + (i)];
+            for (let j = 0; j < 16; j++) {
+                if (currentTrackToggles[j]) {
+                    let track = '#track' + i;
+                    toggleButtonState($(track).find(".buttons").children()[j - 1]);
+                }
             }
         }
     }
@@ -132,7 +135,7 @@ const userRoot = new axios.create({
 });
 
 async function saveTrack() {
-
+    console.log("saving...")
     let sequenceName = $("#sequenceTitle").html();
     let bpm = $(".bpm").val();
     console.log("BPM:" + bpm)
@@ -152,7 +155,7 @@ async function saveTrack() {
     console.log(trackNames);
 
     //console.log($('input[name=route]:checked').parent().text());
-
+    console.log("inputting")
     switch ($('input[name=route]:checked').attr("id")) {
         case "unlisted":
             return await userRoot.post(`/tracks/` + sequenceName + "/", {
@@ -170,9 +173,10 @@ async function saveTrack() {
                 });
             return await privRoot.post(`/tracks/` + sequenceName + "/", {
                 data: { sequenceName, author, trackNames, trackToggles, bpm }
-            }, { headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") } });
+            }, { headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") } })
 
         case "public":
+    
             await userRoot.post(`/tracks/` + sequenceName + "/", {
                 data: { sequenceName, author, trackNames, trackToggles, bpm },
             },
@@ -217,6 +221,7 @@ function logoutHandler() {
     //log out
     localStorage.setItem("jwtToken", null)
     localStorage.setItem("currUser", null)
+    localStorage.setItem("currentTrack", null)
     location.replace("http://localhost:3001/login.html")
 }
 
@@ -225,7 +230,8 @@ $("#logButton").on("click", logoutHandler);
 
 $(document).ready(function () {
     $(".save").on("click", saveTrack);
-    console.log(currUser);
+
+    console.log("set save handler!");
     if (currUser !== "null") {
         $("#logButton").html("Logout");
     } else {

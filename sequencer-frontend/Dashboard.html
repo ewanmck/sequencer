@@ -11,9 +11,24 @@
 </head>
 
 <body>
-  <header class="hero is-light">
+    <div class="navbar is-primary">
+        <div class="navbar-start">
+            <p class="title is-3">Online Sequencer - Dashboard</p>
+        </div>
+        <div class="navbar-end">
+        <div class="column has-text-right">
+            <button type="button" class="button" id="seqButton">
+                Sequencer
+              </button>
+              <button type="button" class="button" id="logButton">
+                
+              </button>
+        </div>
+        </div>
 
-  </header>
+
+    </div>
+
 
   <div class="section">
     <div class="columns">
@@ -32,16 +47,7 @@
               <a class="button" id="skillChange">Update</a>
             </div> -->
           </div>
-          <div class="level-right">
-            <div class="level-item">
-              <button type="button" class="button is-medium" id="seqButton">
-                Sequencer
-              </button>
-              <button type="button" class="button is-medium" id="logButton">
-                
-              </button>
-            </div>
-          </div>
+
         </div>
 
         <div class="columns">
@@ -102,7 +108,7 @@
                 </div>
               </div>
               <div class="scrollable">
-                <ul id="popTracks">
+                <ul id="allTracks">
 
                 </ul>
               </div>

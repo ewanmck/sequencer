@@ -9,37 +9,60 @@ const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
 });
 
-const accRoot = new axios.create({
-    baseURL: "http://localhost:3000/account"
+const privRoot = new axios.create({
+    baseURL: "http://localhost:3000/private"
+});
+
+const userRoot = new axios.create({
+    baseURL: "http://localhost:3000/user"
 });
   
 console.log(currUser);
 
 
 
-//get popular tracks from server
-async function loadTrackList(filteredList = null, whichList = null){
-    if(filteredList == null){
-        let response = await getAllTracks();
-        tracks = response.data.result;
+//get public tracks from server
+async function loadAllList(permissions){
+    console.log("loading")
+    //if(filteredList == null){
+    let response = null;
+    if(permissions == "private"){
+        console.log("loading private")
+        response = await getTracks("private");
+        loadUserList();
+        
     }
     else{
-        tracks = list;
+        response = await getTracks("public")
     }
-    console.log(tracks);
+
+    if(response == null){
+        ($("#allTracks").html("No tracks available!"))
+    }
+
+    tracks = response.data.result;
+
+    //}
+    //else{
+    //  tracks = list;
+    //}
+
     trackNames = Object.keys(tracks);
     trackInfo = Object.values(tracks);
 
     trackCounter = trackInfo.length;
 
-    let popularTracks = $("#popTracks");
+    let allTracks = $("#allTracks");
     let yourTracks = $("#yourTracks");
 
     console.log(localStorage.getItem("currUser"))
 
-    if (localStorage.getItem("currUser") == "null") {
+    if(permissions == "public"){
         yourTracks.append($('<p class="has-text-centered">Log in to view your tracks!</p>'))
     }
+    //if (localStorage.getItem("currUser") == "null") {
+    //    yourTracks.append($('<p class="has-text-centered">Log in to view your tracks!</p>'))
+    //}
 
     for(i=0; i<trackNames.length; i++){
 
@@ -62,19 +85,114 @@ async function loadTrackList(filteredList = null, whichList = null){
             location.replace("http://localhost:3001");
         })
 
-        popularTracks.append(newRecord);
-        if(currUser == trackInfo[i]["author"]){
-            yourTracks.append(newRecord.clone());
-            yourTrackCounter += 1;
-
-        }
+        allTracks.append(newRecord);
 
         $("#totalTracks").html(trackCounter + " tracks")
-        $("#yourTotalTracks").html(yourTrackCounter + " tracks")
         //append into right list
     }
 }
-loadTrackList();
+
+
+async function reloadAllList(){
+    $("#yourtracks").empty();
+    $("#allTracks").empty();
+    loadAllList("private");
+}
+
+
+//get your unlisted tracks from server
+async function loadUserList(){
+    let response = await getTracks("user");
+
+    if(response == null){
+        ($("#yourTracks").html("No tracks available!"))
+    }
+
+    tracks = response.data.result;
+
+    //}
+    //else{
+    //  tracks = list;
+    //}
+
+    trackNames = Object.keys(tracks);
+    trackInfo = Object.values(tracks);
+
+    trackCounter = trackInfo.length;
+
+    let yourTracks = $("#yourTracks");
+
+
+    for(i=0; i<trackNames.length; i++){
+
+        let newRecord = $("<div class = 'columns'></div>");
+        newRecord.width("100%");
+        newRecord.height("70px");
+        newRecord.css("background-color", "lightblue")
+        newRecord.css("margin", "5px")
+        newRecord.addClass("list-item")
+        console.log( trackInfo[i])
+        newRecord.data("trackInfo", trackInfo[i])
+        console.log( "Data: " +newRecord.data("trackInfo"));
+        newRecord.append($("<div class = 'column'>" +trackNames[i]+"</div>"))
+        newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["author"]+"</div>"))
+
+        let deleteButton = $("<button class = 'button delete'></button>");
+        deleteButton.on("click", async function(event){
+            await deleteHandler(event);
+            console.log("madeIt")
+            reloadAllList();
+        }
+        );
+
+        newRecord.append($("<div class = 'column has-text-centered'><</div>").append(deleteButton))
+        
+        newRecord.on("click", function(event){
+            if(event.target.classList[1] == "delete"){
+                return;
+            }
+            console.log($(this).data("trackInfo"))
+            localStorage.setItem("currentTrack", JSON.stringify($(this).data("trackInfo")))
+            location.replace("http://localhost:3001");
+        })
+
+
+        yourTracks.append(newRecord);
+        yourTrackCounter += 1;
+
+
+        $("#yourTotalTracks").html(yourTrackCounter + " tracks")
+        //append into right list
+    }
+
+}
+
+async function deleteHandler(event){
+    trackName = $(event.target).parent().parent().children().eq(0).html();
+    console.log(trackName)
+    try{
+    await userRoot.delete("/tracks/" + trackName,
+    {
+        headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+    });
+    await privRoot.delete("/tracks/" + trackName,
+    {
+        headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+    });
+
+    return await pubRoot.delete("/tracks/" + trackName,);
+    }
+    catch(e){
+
+    }
+
+
+
+}
+
+
+
+
 
 //TODO: make this functional. Filter does not work on generic objects
 //      additionally, it is using the loadTrackList improperly currently
@@ -111,14 +229,35 @@ $("#allSearchButton").on("click", function() {
 
 
 
-async function getAllTracks() {
-    return await pubRoot.get("/tracks");   
+async function getTracks(location) {
+    try{
+    switch (location){
+        case "public":
+            return await pubRoot.get("/tracks");
+        case "private":
+            return await privRoot.get("/tracks",
+            {
+                headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+            });
+        case "user":
+            return await userRoot.get("/tracks",
+            {
+                headers: { 'Authorization': "Bearer " + localStorage.getItem("jwtToken") }
+            });
+        
+
+    } 
+    }catch(e){
+        return null;
+    } 
 }
+
 
 function logoutHandler(){
     //log out
     localStorage.setItem("jwtToken", null)
     localStorage.setItem("currUser", null)
+    localStorage.setItem("currentTrack", null)
     location.replace("http://localhost:3001/login.html")
 }
 
@@ -163,13 +302,17 @@ const handleSkillUpdate = function() {
 }
 
 $(document).ready(function() {
-    //console.log(currUser);
-    console.log(currUser !== "null");
-    //$("#skillChange").on("click", handleSkillUpdate);
+    
+
     if (currUser !== "null") {
         $("#logButton").html("Logout");
+        
+        loadAllList("private");
+
     } else {
         $("#logButton").html("Login");
+        
+        loadAllList("public")
     }
 
     if (currUser !== "null") {

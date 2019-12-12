@@ -31,30 +31,31 @@
 </head>
 
 <body>
-    <div class="hero is-info section">
-        <div class="container columns">
-            <div class="column">
-                <h1 class="title is-2">Sequencer - Edit Track</h1>
+    <div class="navbar is-primary">
+            <div class="navbar-start">
+                <p class="title is-3">Online Sequencer</p>
             </div>
+            <div class="navbar-end">
             <div class="column has-text-right">
                 <div class="button"><a href="http://localhost:3001/dashboard.html">My Dashboard</a></div>
                 <div id="logButton" class="button">Logout</div>
             </div>
+            </div>
 
 
-        </div>
     </div>
 
 
     <section class="section" id="titleBox">
-        <div class="columns is-centered">
-            <div class="column is-centered">
-                <span class="title is-3" id='sequenceTitle'>
+        <!-- <div class="columns is-centered"> -->
+            <div class="has-text-centered">
+                <span class="title is-1" id='sequenceTitle'>
                 </span>
-                <input type='text' class="title is-3" id='seqTitleEdit'></input>
+                <input type='text' class="title is-1 is-centered" id='seqTitleEdit'></input>
             </div>
-            <div class="column is-centered">
-                <div class="control">
+            <div class = "spacer"></div>
+            <div class="has-text-centered">
+                <div class="control has-text-centered">
                     <label class="radio">
                         <input type="radio" id="unlisted" name="route" checked>
                         Unlisted
@@ -68,24 +69,24 @@
                         Public
                     </label>
                 </div>
-                <button class="button save">Save</button>
+                <button class="button save is-large">Save</button>
             </div>
-        </div>
+        <!-- </div> -->
     </section>
 
     <section class="section box" id="soundLibrary">
-        <div class="columns">
+        <div class="columns is-primary">
             <div class="column sound-column">
                 <p class="subtitle is-3 column-header">Choose a Library</p>
                 <div class="group-selection scroll-pane">
-                    <button class="button is-info library">kick</button>
-                    <button class="button is-info library">bass</button>
-                    <button class="button is-info library">snare</button>
-                    <button class="button is-info library">hats</button>
-                    <button class="button is-info library">tom</button>
-                    <button class="button is-info library">synth</button>
-                    <button class="button is-info library">sample</button>
-                    <button class="button is-info library">fx</button>
+                    <button class="button is-primary library">kick</button>
+                    <button class="button is-primary library">bass</button>
+                    <button class="button is-primary library">snare</button>
+                    <button class="button is-primary library">hats</button>
+                    <button class="button is-primary library">tom</button>
+                    <button class="button is-primary library">synth</button>
+                    <button class="button is-primary library">sample</button>
+                    <button class="button is-primary library">fx</button>
                 </div>
             </div>
             <div class="column sound-column">
@@ -97,17 +98,17 @@
             <div class="column sound-column">
                 <p class="subtitle is-3 column-header">Choose a Track</p>
                 <div class="column track-selection scroll-pane">
-                    <button class="button is-info track">1</button>
-                    <button class="button is-info track">2</button>
-                    <button class="button is-info track">3</button>
-                    <button class="button is-info track">4</button>
+                    <button class="button is-primary track">1</button>
+                    <button class="button is-primary track">2</button>
+                    <button class="button is-primary track">3</button>
+                    <button class="button is-primary track">4</button>
                     <br>
-                    <button class="button is-info track">5</button>
-                    <button class="button is-info track">6</button>
-                    <button class="button is-info track">7</button>
-                    <button class="button is-info track">8</button>
+                    <button class="button is-primary track">5</button>
+                    <button class="button is-primary track">6</button>
+                    <button class="button is-primary track">7</button>
+                    <button class="button is-primary track">8</button>
                     <br>
-                    <button class="button is-info submission">Send to Track!</button>
+                    <button class="button is-primary submission">Send to Track!</button>
                 </div>
             </div>
         </div>
