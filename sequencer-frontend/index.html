@@ -31,9 +31,8 @@
 </head>
 
 <body>
-    <section class="hero is-info">
-        <div class="hero-body">
-            <div class="container has-text-centered columns">
+        <div class="hero is-info">
+            <div class="container columns">
                 <div class = "column">
                     <h1 class="title is-2">Sequencer - Edit Track</h1>
                 </div>
@@ -44,13 +43,14 @@
 
                 
             </div>
-    </section>
+        </div>
 
-    <section class="section" id="titleBox">
-        <span class="title is-1" id='sequenceTitle'>
+
+    <section  id="titleBox">
+        <span class="title is-3" id='sequenceTitle'>
         </span>
 
-        <input type='text' class="title is-1" id='seqTitleEdit'>
+        <input type='text' class="title is-3" id='seqTitleEdit'>
         </input>
 
     </section>
@@ -72,7 +72,7 @@
             </div>
             <div class="column sound-column">
                 <p class="subtitle is-3 column-header">Choose a Sound</p>
-                <div class="sound-selection scroll-pane" style="overflow:auto">
+                <div class="sound-selection scroll-pane">
                     No Library Selected
                 </div>
             </div>
@@ -158,15 +158,15 @@
     </section>
 
     <footer class="footer">
-        hehe its footer
+            <div>Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
 
     <script src="node_modules/axios/dist/axios.js"></script>
     <script src="buttons.js"></script>
     <script src="volume.js"></script>
     <script src="library.js"></script>
-    <script src="editable.js" type = "module"></script>
     <script src="tone-sequence.js"></script>
+    <script src="editable.js" type = "module"></script>
     <script src="midi-handle.js"></script>
 
 </body>

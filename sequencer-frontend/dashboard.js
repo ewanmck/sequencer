@@ -30,19 +30,28 @@ async function loadTrackList(filteredList = null, whichList = null){
     let popularTracks = $("#popTracks");
     let yourTracks = $("#yourTracks");
     for(i=0; i<trackNames.length; i++){
-        console.log(trackNames[i]);
-        console.log(trackInfo[i])
+
         let newRecord = $("<div class = 'columns'></div>");
         newRecord.width("100%");
         newRecord.height("70px");
         newRecord.css("background-color", "lightblue")
         newRecord.css("margin", "5px")
         newRecord.addClass("list-item")
-
+        console.log( trackInfo[i])
+        newRecord.data("trackInfo", trackInfo[i])
+        console.log( "Data: " +newRecord.data("trackInfo"));
         newRecord.append($("<div class = 'column'>" +trackNames[i]+"</div>"))
         newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["author"]+"</div>"))
         newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["likes"]+"</div>"))
-        //newRecord.append(recordColumns)
+        
+        newRecord.on("click", function(event){
+            console.log($(this).data("trackInfo").sequenceName)
+            currentTrackObject =$(this).data("trackInfo")
+            localStorage.setItem("currentTrack", JSON.stringify($(this).data("trackInfo")))
+
+            location.replace("http://localhost:3001");
+        })
+
         popularTracks.append(newRecord);
         if(currUser == trackInfo[i]["author"]){
             yourTracks.append(newRecord.clone());

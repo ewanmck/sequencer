@@ -34,11 +34,13 @@ let loadFunc = function(){
     
     let title = document.getElementById('sequenceTitle');
     let titleEdit = document.getElementById('seqTitleEdit');
-    if(/*there's no track name saved*/true){
+    if(localStorage.getItem("currentTrack") == null){
         title.innerHTML = "Track Name Here";
         titleEdit.value = "Track Name Here";
     }else{
-        //load from database
+        console.log(JSON.parse(currentTrackObject.sequenceName))
+        title.innerHTML = currentTrackObject.sequenceName//localStorage.getItem("currentTrack").sequenceName;
+        titleEdit.value = currentTrackObject.sequenceName//localStorage.getItem("currentTrack").sequenceName;
     }
     title.addEventListener('click', function(){
         title.style.display = "none";
@@ -77,16 +79,23 @@ const pubRoot = new axios.create({
   
   async function saveTrack() {
     
-    let trackName = $("#sequenceTitle").html();
+    let sequenceName = $("#sequenceTitle").html();
+    let bpm = $(".bpm").val();
+    console.log("BPM:" + bpm)
+    let trackNames = tonesArray;
+    console.log(trackNames)
+    let trackToggles = tracks;
+    console.log(trackToggles)
 
     let author = localStorage.getItem("currUser");
-    console.log(author);
 
-    return await pubRoot.post(`/tracks/` + trackName + "/", { 
-        data: {author, trackName}
+    return await pubRoot.post(`/tracks/` + sequenceName + "/", { 
+        data: {sequenceName, author, trackNames, trackToggles, bpm}
     })
   }
 
+
+  
 
 
 
