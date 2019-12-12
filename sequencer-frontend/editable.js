@@ -2,7 +2,7 @@
 
 let currUser = localStorage.getItem("currUser");
 
-let trackGenerator = function(trackNum, trackInfo){
+let trackGenerator = function (trackNum, trackInfo) {
     let row = $("<div id='track" + trackNum + "' class = 'row columns'></div>");
     let column1 = $("<div class='column'></div");
     let column2 = $("<div class='column is-four-fifths'></div>");
@@ -10,25 +10,29 @@ let trackGenerator = function(trackNum, trackInfo){
     let trackNameText = $("<p class= 'has-text-centered is-italic'></p>");
     let buttons = $("<div class='buttons are-large is-inverted is-centered'></div>");
 
-    for(let i = 1; i <= 16; i++){
+    for (let i = 1; i <= 16; i++) {
         let numberedButton = $("<a class='button is-grey sequencer'>" + i + "</a>")
         buttons.append(numberedButton);
     }
 
     trackNumText.html("TRACK " + trackNum);
-    
-    console.log(trackInfo)
 
-    console.log(trackInfo.trackNames[trackNum-1])
 
-    if(trackInfo != null){
-        trackNameText.html(trackInfo.trackNames[trackNum-1])
-        if(trackInfo.trackNames[trackNum-1]== null){
+
+    if (trackInfo != null) {
+        trackNameText.html(trackInfo.trackNames[trackNum - 1])
+        if (trackInfo.trackNames[trackNum - 1] == null) {
             trackNameText.html("No Track Selected");
+        } else {
+            let sample = new Tone.Player(loadedLibrary[trackInfo.trackNames[trackNum - 1]]).toMaster();
+            sample.volume.value = -25;
+            tonesArray[trackNum - 1] = sample;
         }
-    }else{
+    } else {
         trackNameText.html("No Track Selected");
     }
+    //console.log(trackInfo.trackToggles.track1);
+
 
 
     trackNumText.append(trackNameText);
@@ -39,18 +43,19 @@ let trackGenerator = function(trackNum, trackInfo){
     row.append(column2);
 
     return row;
+
 }
 
 //load saved data (change to load from database eventually)
-let loadFunc = function(){
+let loadFunc = function () {
     let currTrackInfo = null;
     console.log("hello")
     let title = document.getElementById('sequenceTitle');
     let titleEdit = document.getElementById('seqTitleEdit');
-    if(localStorage.getItem("currentTrack") == null){
+    if (localStorage.getItem("currentTrack") == null) {
         title.innerHTML = "Track Name Here";
         titleEdit.value = "Track Name Here";
-    }else{
+    } else {
         currTrackInfo = JSON.parse(localStorage.getItem("currentTrack"))
         //set name from current
         title.innerHTML = currTrackInfo.sequenceName;
@@ -66,41 +71,50 @@ let loadFunc = function(){
 
 
     }
-    title.addEventListener('click', function(){
+    title.addEventListener('click', function () {
         title.style.display = "none";
         titleEdit.style.display = "block";
         titleEdit.focus();
     });
-    titleEdit.addEventListener('focusout', function(){
+    titleEdit.addEventListener('focusout', function () {
         titleEdit.style.display = "none";
         title.innerHTML = titleEdit.value;
         title.style.display = "inline";
-        
+
     });
 
     //load the tracks
     let body = $("#body")
-    for(let i = 1; i<=8; i++){
+    for (let i = 1; i <= 8; i++) {
         let newTrack;
-        if(localStorage.getItem("currentTrack") == null){
+        if (localStorage.getItem("currentTrack") == null) {
             newTrack = trackGenerator(i, null);
         }
-        else{
+        else {
             newTrack = trackGenerator(i, currTrackInfo);
         }
 
-        if(i%2 == 0){
+        
+
+        if (i % 2 == 0) {
             newTrack.addClass("has-background-grey-lighter");
-        }else{
+        } else {
             newTrack.addClass("has-background-grey-light");
         }
 
 
         body.append(newTrack);
+        let currentTrackToggles = currTrackInfo.trackToggles["track" + (i)];
+        for (let j = 0; j < 16; j++) {
+            if (currentTrackToggles[j]) {
+                let track = '#track' + i;
+                toggleButtonState($(track).find(".buttons").children()[j-1]);
+            }
+        }
     }
-    
 
-        
+
+
 }
 
 loadFunc();
@@ -108,18 +122,18 @@ loadFunc();
 const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
 });
-  
-  async function saveTrack() {
-    
+
+async function saveTrack() {
+
     let sequenceName = $("#sequenceTitle").html();
     let bpm = $(".bpm").val();
     console.log("BPM:" + bpm)
-    let trackNames=[null,null,null,null,null,null,null,null];
-    for(let i=0; i<8;i++){
-        if($("#track" + (i+1)).find(".is-italic").html() == "No Track Selected"){
+    let trackNames = [null, null, null, null, null, null, null, null];
+    for (let i = 0; i < 8; i++) {
+        if ($("#track" + (i + 1)).find(".is-italic").html() == "No Track Selected") {
             trackNames[i] == null;
-        }else{
-            trackNames[i] = $("#track" + (i+1)).find(".is-italic").html();
+        } else {
+            trackNames[i] = $("#track" + (i + 1)).find(".is-italic").html();
         }
     }
     let trackToggles = tracks;
@@ -129,14 +143,10 @@ const pubRoot = new axios.create({
 
     console.log(trackNames);
 
-    return await pubRoot.post(`/tracks/` + sequenceName + "/", { 
-        data: {sequenceName, author, trackNames, trackToggles, bpm}
+    return await pubRoot.post(`/tracks/` + sequenceName + "/", {
+        data: { sequenceName, author, trackNames, trackToggles, bpm }
     })
-  }
-
-
-  
-
+}
 
 
 //save the track to /public/ and save name to /user/currUser for reference
@@ -157,10 +167,10 @@ const pubRoot = new axios.create({
 //         console.log(error);
 //         alert("Save failed");
 //     }
-    
+
 // }
 
-function logoutHandler(){
+function logoutHandler() {
     //log out
     localStorage.setItem("jwtToken", null)
     localStorage.setItem("currUser", null)
