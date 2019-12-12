@@ -1,7 +1,6 @@
 //Functionality of objects in the sequencer that can be edited by the user
 
-
-
+let currUser = localStorage.getItem("currUser");
 
 let trackGenerator = function(trackNum){
     let row = $("<div id='track" + trackNum + "' class = 'row columns'></div>");
@@ -127,9 +126,15 @@ function logoutHandler(){
     location.replace("http://localhost:3001/login.html")
 }
 
-$("#logoutButton").on("click", logoutHandler);
+$("#logButton").on("click", logoutHandler);
 
 
 $(document).ready(function () {
     $(".save").on("click", saveTrack);
+    console.log(currUser);
+    if (currUser !== "null") {
+        $("#logButton").html("Logout");
+    } else {
+        $("#logButton").html("Login");
+    }
 });

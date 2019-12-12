@@ -9,8 +9,9 @@ const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
 });
   
+console.log(currUser);
 
-$("#dashTitle").html(currUser + "'s Dashboard")
+
 
 //get popular tracks from server
 async function loadTrackList(filteredList = null, whichList = null){
@@ -29,6 +30,11 @@ async function loadTrackList(filteredList = null, whichList = null){
 
     let popularTracks = $("#popTracks");
     let yourTracks = $("#yourTracks");
+
+    if (localStorage.getItem(currUser) == null) {
+        yourTracks.append($('<p class="has-text-centered">Log in to view your tracks!</p>'))
+    }
+
     for(i=0; i<trackNames.length; i++){
 
         let newRecord = $("<div class = 'columns'></div>");
@@ -112,11 +118,28 @@ function logoutHandler(){
     location.replace("http://localhost:3001/login.html")
 }
 
-$("#logoutButton").on("click", logoutHandler);
+
+
+$("#logButton").on("click", logoutHandler);
 $("#seqButton").on("click", function() {
     location.replace("http://localHost:3001")
 })
 
+$(document).ready(function() {
+    console.log(currUser);
+    console.log(currUser !== "null");
+    if (currUser !== "null") {
+        $("#logButton").html("Logout");
+    } else {
+        $("#logButton").html("Login");
+    }
+
+    if (currUser !== "null") {
+        $("#dashTitle").html(currUser + "'s Dashboard")
+    } else {
+        $("#dashTitle").html("Dashboard");
+    }
+})
 
 //async function deleteSong(trackName){
 //    await pubRoot.delete(`/tracks/trackName`)
