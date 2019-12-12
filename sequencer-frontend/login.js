@@ -56,26 +56,37 @@ const handleLogin = async function() {
 }
 
 function toggle(event){
-    if($(this).attr("id") == "toggleLogin"){
-        $("#toggleLogin").removeClass("is-primary");
-        $("#toggleCreate").addClass("is-primary");
-        $("#skillLevel").css("display", "none")
-        $("#create").css("display", "none");
-        $("#login").css("display", "block");
-    }else{
+    if($(this).attr("id") == "toggleCreate"){
         $("#toggleCreate").removeClass("is-primary");
         $("#toggleLogin").addClass("is-primary");
         $("#skillLevel").css("display", "block");
         $("#login").css("display", "none");
         $("#create").css("display", "block");
+    }else{
+        $("#toggleLogin").removeClass("is-primary");
+        $("#toggleCreate").addClass("is-primary");
+        $("#skillLevel").css("display", "none")
+        $("#create").css("display", "none");
+        $("#login").css("display", "block");
+        console.log("hey")
+
     }
 }
 
+function createClickHandler(event){
+    toggle(event);
+    console.log("toggled")
+    handleCreate(event);
+
+}
+
+
+//$("#create").on("click", toggle);
 $("#toggleCreate").on("click", toggle);
 $("#toggleLogin").on("click", toggle)
 
 
 $(document).ready(function () {
-    $("#create").on("click", handleCreate);
+    $("#create").on("click", createClickHandler);
     $("#login").on("click", handleLogin)
 });
