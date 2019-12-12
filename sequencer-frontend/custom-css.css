@@ -83,7 +83,6 @@ input[type=text]{
     border-bottom: 1px solid #AAAAAA;
     width:fit-content;
     color:#AAAAAA;
-    display:none;
 }
 input:focus{
     outline-width:0;
@@ -147,4 +146,16 @@ input:focus{
 
 .spacer{
     height: 20px;
+}
+
+.vlmLabel{
+    padding-left: 30px;
+    padding-top: 20px;
+    font-size: 30px;
+}
+.vlm{
+    margin-top:-30px;
+}
+.volsec{
+    height:185px;
 }

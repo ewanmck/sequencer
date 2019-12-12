@@ -33,7 +33,7 @@
 <body>
     <div class="navbar is-primary">
             <div class="navbar-start">
-                <p class="title is-3">Online Sequencer</p>
+                <p class="title is-3">Online Sequencer - Edit Track</p>
             </div>
             <div class="navbar-end">
             <div class="column has-text-right">
@@ -51,7 +51,7 @@
             <div class="has-text-centered">
                 <span class="title is-1" id='sequenceTitle'>
                 </span>
-                <input type='text' class="title is-1 is-centered" id='seqTitleEdit'></input>
+                <input type='text' class="title is-1 is-centered has-text-centered" id='seqTitleEdit'></input>
             </div>
             <div class = "spacer"></div>
             <div class="has-text-centered">
@@ -124,53 +124,60 @@
         <div class="container box" id="body">
     </section>
 
-    <section class="section has-background-grey-light">
+    <section class="section has-background-grey-light volsec">
         <div class="columns">
-            <div class="column" id="vlm1">
-                <div class="slider-wrapper is-centered">
+            <div class="column vlm" id="vlm1">
+                <div class="slider-wrapper is-centered is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
 
                 </div>
+                <p class = "is-3 vlmLabel"> Track 1 </p>
+
+            </div>
+            <div class="column vlm" id="vlm2">
+                <div class="slider-wrapper is-inline">
+                    <input class="slider" type="range" min="-40" max="-15" step="1">
+                </div>
+                <p class = "is-3 vlmLabel"> Track 2 </p>
+            </div>
+            <div class="column vlm" id="vlm3">
+                <div class="slider-wrapper is-inline">
+                    <input class="slider" type="range" min="-40" max="-15" step="1">
+                </div>
+                <p class = "is-3 vlmLabel"> Track 3 </p>
 
 
             </div>
-            <div class="column" id="vlm2">
-                <div class="slider-wrapper">
+            <div class="column vlm" id="vlm4">
+                <div class="slider-wrapper is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
                 </div>
-            </div>
-            <div class="column" id="vlm3">
-                <div class="slider-wrapper">
-                    <input class="slider" type="range" min="-40" max="-15" step="1">
-                </div>
-
+                <p class = "is-3 vlmLabel"> Track 4 </p>
 
             </div>
-            <div class="column" id="vlm4">
-                <div class="slider-wrapper">
+            <div class="column vlm" id="vlm5">
+                <div class="slider-wrapper is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
                 </div>
-
+                <p class = "is-3 vlmLabel"> Track 5 </p>
             </div>
-            <div class="column" id="vlm5">
-                <div class="slider-wrapper">
+            <div class="column vlm" id="vlm6">
+                <div class="slider-wrapper is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
                 </div>
+                <p class = "is-3 vlmLabel"> Track 6 </p>
             </div>
-            <div class="column" id="vlm6">
-                <div class="slider-wrapper">
+            <div class="column vlm" id="vlm7">
+                <div class="slider-wrapper is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
                 </div>
+                <p class = "is-3 vlmLabel"> Track 7 </p>
             </div>
-            <div class="column" id="vlm7">
-                <div class="slider-wrapper">
+            <div class="column vlm" id="vlm8">
+                <div class="slider-wrapper is-inline">
                     <input class="slider" type="range" min="-40" max="-15" step="1">
                 </div>
-            </div>
-            <div class="column" id="vlm8">
-                <div class="slider-wrapper">
-                    <input class="slider" type="range" min="-40" max="-15" step="1">
-                </div>
+                <p class = "is-3 vlmLabel"> Track 8 </p>
             </div>
 
         </div>

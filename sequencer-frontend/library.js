@@ -31,7 +31,7 @@ const updateLibrary = function (event) {
     whitespace.attr('style', "");
     //change button colors
     if (currLibraryButton != null) {
-        currLibraryButton.css("background-color", "hsl(204, 86%, 53%)");
+        currLibraryButton.css("background-color", "hsl(171, 100%, 41%)");
     }
 
     currLibraryButton = $(event.target);
@@ -44,7 +44,7 @@ const updateCurrentSelection = function (event) {
 
     //change button colors
     if (currSoundButton != null) {
-        currSoundButton.css("background-color", "hsl(204, 86%, 53%)");
+        currSoundButton.css("background-color", "hsl(171, 100%, 41%)");
     }
 
     currSoundButton = $(event.target);
@@ -59,7 +59,7 @@ const updateTrackSelection = function (event) {
 
     //change button colors
     if (currTrackButton != null) {
-        currTrackButton.css("background-color", "hsl(204, 86%, 53%)");
+        currTrackButton.css("background-color", "hsl(171, 100%, 41%)");
     }
 
     currTrackButton = $(event.target);

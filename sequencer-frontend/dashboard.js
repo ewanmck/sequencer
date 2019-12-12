@@ -77,7 +77,7 @@ async function loadAllList(permissions){
         console.log( "Data: " +newRecord.data("trackInfo"));
         newRecord.append($("<div class = 'column'>" +trackNames[i]+"</div>"))
         newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["author"]+"</div>"))
-        newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["likes"]+"</div>"))
+        newRecord.append($("<div class = 'column has-text-centered'>" + "</div>"))
         
         newRecord.on("click", function(event){
             console.log($(this).data("trackInfo"))
@@ -137,7 +137,7 @@ async function loadUserList(){
         newRecord.append($("<div class = 'column'>" +trackNames[i]+"</div>"))
         newRecord.append($("<div class = 'column has-text-centered'>" +trackInfo[i]["author"]+"</div>"))
 
-        let deleteButton = $("<button class = 'button delete'></button>");
+        let deleteButton = $("<div><span> Delete:</span> <button class = 'button delete'> </button></div> ");
         deleteButton.on("click", async function(event){
             await deleteHandler(event);
             console.log("madeIt")
@@ -145,7 +145,7 @@ async function loadUserList(){
         }
         );
 
-        newRecord.append($("<div class = 'column has-text-centered'><</div>").append(deleteButton))
+        newRecord.append($("<div class = 'column has-text-centered'></div>").append(deleteButton))
         
         newRecord.on("click", function(event){
             if(event.target.classList[1] == "delete"){
@@ -161,14 +161,14 @@ async function loadUserList(){
         yourTrackCounter += 1;
 
 
-        $("#yourTotalTracks").html(yourTrackCounter + " tracks")
+        $("#yourTotalTracks").html(tracks.length + " tracks")
         //append into right list
     }
 
 }
 
 async function deleteHandler(event){
-    trackName = $(event.target).parent().parent().children().eq(0).html();
+    trackName = $(event.target).parent().parent().parent().children().eq(0).html();
     console.log(trackName)
     try{
     await userRoot.delete("/tracks/" + trackName,

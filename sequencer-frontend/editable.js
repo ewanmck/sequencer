@@ -54,6 +54,7 @@ let loadFunc = function () {
     let titleEdit = document.getElementById('seqTitleEdit');
     if (localStorage.getItem("currentTrack") == null || localStorage.getItem("currentTrack") == "null" ) {
         title.innerHTML = "Track Name Here";
+        titleEdit.style.display = "none";
         titleEdit.value = "Track Name Here";
     } else {
         currTrackInfo = JSON.parse(localStorage.getItem("currentTrack"))
@@ -73,7 +74,7 @@ let loadFunc = function () {
     }
     title.addEventListener('click', function () {
         title.style.display = "none";
-        titleEdit.style.display = "block";
+        titleEdit.style.display = "inline";
         titleEdit.focus();
     });
     titleEdit.addEventListener('focusout', function () {
