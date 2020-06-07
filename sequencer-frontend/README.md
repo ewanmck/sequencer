@@ -4,8 +4,8 @@ An audio sequncer designed to be used as a standalone app or with a Novation Lau
 
 ## Setup
 
-21. Start up the comp426-backend using the instructions in the 'README.md' file. Server should be running on port 3000 for the project to run properly.
-22. Open the sequencer-frontend directory in a terminal and run 'npm install' 3. To start-up the site, run 'npx browser-sync start -sw' in the same directory
+1. Start up the comp426-backend using the instructions in the 'README.md' file. Server should be running on port 3000 for the project to run properly.
+2. Open the sequencer-frontend directory in a terminal and run 'npm install' 3. To start-up the site, run 'npx browser-sync start -sw' in the same directory
 
 ## Website Structure
 
